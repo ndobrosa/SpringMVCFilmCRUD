@@ -17,9 +17,21 @@ import com.skilldistillery.film.entities.Film;
 @Repository
 public class FilmDAOImpl implements FilmDAO {
 	
+	// URL to the database
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
+
+	// Static initializer that loads the JDBC driver, enabling the app to interact
+	// with the database
+	static {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private final String user = "student";
 	private final String pass = "student";
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 
 
 	@Override
