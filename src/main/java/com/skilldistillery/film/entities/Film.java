@@ -24,7 +24,7 @@ public class Film {
 	private String language;
 	private String category;
 	private List<Actor> actors;
-	private List<InventoryItem> inventoryItems;
+//	private List<InventoryItem> inventoryItems;
 
 	public Film() {
 		super();
@@ -162,13 +162,13 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public List<InventoryItem> getInventoryItems() {
-		return inventoryItems;
-	}
-
-	public void setInventoryItems(List<InventoryItem> inventoryItems) {
-		this.inventoryItems = inventoryItems;
-	}
+//	public List<InventoryItem> getInventoryItems() {
+//		return inventoryItems;
+//	}
+//
+//	public void setInventoryItems(List<InventoryItem> inventoryItems) {
+//		this.inventoryItems = inventoryItems;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -255,7 +255,9 @@ public class Film {
 				+ releaseYear + ", languageId: " + languageId + ", language: " + language + ", category: " + category
 				+ "\nrentalDuration: " + rentalDuration + ", rentalRate: " + rentalRate + ", length: " + length
 				+ "\nreplacementCost: " + replacementCost + ", rating: " + rating + ", specialFeatures: "
-				+ specialFeatures + "\nActor List: " + actors + "\nInventory Status: " + inventoryItems;
+				+ specialFeatures + "\nActor List: " + actors;
+		
+//		 + "\nInventory Status: " + inventoryItems
 	}
 
 }
