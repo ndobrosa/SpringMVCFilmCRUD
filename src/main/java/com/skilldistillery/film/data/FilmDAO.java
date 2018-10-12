@@ -15,7 +15,5 @@ public interface FilmDAO {
 
 	public List<Actor> getActorsByFilmId(int filmId) throws SQLException;
 
-	public List<Film> getFilmsByActorId(int actorId) throws SQLException;
-
 	public Film addFilm(Film film);
 }
