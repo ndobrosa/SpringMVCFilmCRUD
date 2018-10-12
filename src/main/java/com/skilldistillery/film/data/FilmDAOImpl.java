@@ -205,10 +205,6 @@ public class FilmDAOImpl implements FilmDAO {
 			return actorsByFilm;
 		}	
 
-	@Override
-	public List<Film> getFilmsByActorId(int actorId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
