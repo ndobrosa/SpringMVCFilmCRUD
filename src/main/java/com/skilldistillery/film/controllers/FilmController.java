@@ -25,12 +25,13 @@ public class FilmController {
 	@RequestMapping(path = "searchById.do", params = "searchText", method = RequestMethod.GET)
 	public ModelAndView getFilmById(String searchText) {
 		ModelAndView mv = new ModelAndView();
-		int filmId = Integer.getInteger(searchText);
+		int filmId = Integer.parseInt(searchText);
 		Film film = null;
 		try {
 			film = dao.getFilmById(filmId);
 			mv.addObject(film);
 			mv.setViewName("WEB-INF/result.jsp");
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

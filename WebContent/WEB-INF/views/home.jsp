@@ -9,6 +9,8 @@
 <body>
 
 	<form action="searchById.do" method="GET">
+		<label for="searchText">Enter an Id:</label> 
+		<input type="text" name="searchText" />
 		<input type="submit" value="search by id" />
 	</form>
 
