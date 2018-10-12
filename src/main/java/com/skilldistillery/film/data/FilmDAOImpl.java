@@ -3,9 +3,12 @@ package com.skilldistillery.film.data;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
+@Repository
 public class FilmDAOImpl implements FilmDAO {
 
 	@Override
