@@ -1,38 +1,57 @@
 package com.skilldistillery.film.entities;
 
-import java.util.List;
-
-/*
- * This class represents a blueprint of an Actor object. It has public getters and setters 
- * and private fields for encapsulation purposes. It also features a custom toString() 
- * method which prints values of all fields.
- */
 public class Actor {
-
 	private int id;
-	private String firstName;
-	private String lastName;
-	private List<Film> films;
+	private String first_name;
+	private String last_name;
 
-	public Actor(int id, String firstName, String lastName, List<Film> films) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.films = films;
+	public int getId() {
+		return id;
 	}
 
 	public Actor() {
+
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFirst_name() {
+		return first_name;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public Actor(int id, String first_name, String last_name) {
+		super();
+		this.id = id;
+		this.first_name = first_name;
+		this.last_name = last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+
+	@Override
+	public String toString() {
+		return "Actor ID: " + id + ", first name: " + first_name + ", last name: " + last_name;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((films == null) ? 0 : films.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((last_name == null) ? 0 : last_name.hashCode());
 		return result;
 	}
 
@@ -45,62 +64,18 @@ public class Actor {
 		if (getClass() != obj.getClass())
 			return false;
 		Actor other = (Actor) obj;
-		if (films == null) {
-			if (other.films != null)
+		if (first_name == null) {
+			if (other.first_name != null)
 				return false;
-		} else if (!films.equals(other.films))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!first_name.equals(other.first_name))
 			return false;
 		if (id != other.id)
 			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
+		if (last_name == null) {
+			if (other.last_name != null)
 				return false;
-		} else if (!lastName.equals(other.lastName))
+		} else if (!last_name.equals(other.last_name))
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "\nid: " + id + ", firstName: " + firstName + ", lastName: " + lastName;
-		// consider adding + ", films=" + films + " instead of "
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public List<Film> getFilms() {
-		return films;
-	}
-
-	public void setFilms(List<Film> films) {
-		this.films = films;
-	}
-
 }

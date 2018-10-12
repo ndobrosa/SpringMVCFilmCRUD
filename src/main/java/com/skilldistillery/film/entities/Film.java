@@ -2,77 +2,54 @@ package com.skilldistillery.film.entities;
 
 import java.util.List;
 
-/*
-* This class represents a blueprint of a Film object. It has public getters and setters 
-* and private fields for encapsulation purposes. It also features a custom toString() 
-* method that is easier to read. It also has an equals method and a toFullString method
-* which prints value of all fields. Regular toString method prints only the title, 
-* releaseYear, language, description and actors.
-*/
 public class Film {
 	private int id;
 	private String title;
 	private String description;
-	private String releaseYear;
-	private int languageId;
-	private int rentalDuration;
-	private double rentalRate;
-	private int length;
-	private double replacementCost;
-	private String rating;
-	private String specialFeatures;
-	private String language;
+	private int release_year;
+	private int language_id;
+	private String language_name;
+	private String rental_duration;
+	private double rental_rate;
+	private String length;
 	private String category;
+	private String media_condition;
 	private List<Actor> actors;
-//	private List<InventoryItem> inventoryItems;
+	private List<Film> films;
 
 	public Film() {
-		super();
+
 	}
 
-	public Film(int id, String title, String description, String releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			String language, String category, List<Actor> actors) {
+	public Film(int id, String title, String description, int release_year, int language_id, String language_name,
+			String rental_duration, double rental_rate, String length, String category, String media_condition, double replacement_cost, String rating,
+			String special_features) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.releaseYear = releaseYear;
-		this.languageId = languageId;
-		this.rentalDuration = rentalDuration;
-		this.rentalRate = rentalRate;
+		this.release_year = release_year;
+		this.language_id = language_id;
+		this.language_name = language_name;
+		this.rental_duration = rental_duration;
+		this.rental_rate = rental_rate;
 		this.length = length;
-		this.replacementCost = replacementCost;
+		this.category = category;
+		this.media_condition = media_condition;
+		this.replacement_cost = replacement_cost;
 		this.rating = rating;
-		this.specialFeatures = specialFeatures;
-		this.language = language;
-		this.category = category;
-		this.actors = actors;
+		this.special_features = special_features;
+	}
+	
+
+	public Film(String media_condition) {
+		super();
+		this.media_condition = media_condition;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public List<Actor> getActors() {
-		return actors;
-	}
-
-	public void setActors(List<Actor> actors) {
-		this.actors = actors;
-	}
+	private double replacement_cost;
+	private String rating;
+	private String special_features;
 
 	public int getId() {
 		return id;
@@ -98,95 +75,151 @@ public class Film {
 		this.description = description;
 	}
 
-	public String getReleaseYear() {
-		return releaseYear;
+	public int getRelease_year() {
+		return release_year;
 	}
 
-	public void setReleaseYear(String releaseYear) {
-		this.releaseYear = releaseYear;
+	public void setRelease_year(int release_year) {
+		this.release_year = release_year;
 	}
 
-	public int getLanguageId() {
-		return languageId;
+	public int getLanguage_id() {
+		return language_id;
 	}
 
-	public void setLanguageId(int languageId) {
-		this.languageId = languageId;
+	public void setLanguage_id(int language_id) {
+		this.language_id = language_id;
 	}
 
-	public int getRentalDuration() {
-		return rentalDuration;
+	public String getRental_duration() {
+		return rental_duration;
 	}
 
-	public void setRentalDuration(int rental_duration) {
-		this.rentalDuration = rental_duration;
+	public void setRental_duration(String rental_duration) {
+		this.rental_duration = rental_duration;
 	}
 
-	public double getRentalRate() {
-		return rentalRate;
+	public double getRental_rate() {
+		return rental_rate;
 	}
 
-	public void setRentalRate(double rentalRate) {
-		this.rentalRate = rentalRate;
+	public void setRental_rate(double rental_rate) {
+		this.rental_rate = rental_rate;
 	}
 
-	public int getLength() {
+	public String getLength() {
 		return length;
 	}
 
-	public void setLength(int length) {
+	public void setLength(String length) {
 		this.length = length;
 	}
 
-	public double getReplacementCost() {
-		return replacementCost;
+	public double getReplacement_cost() {
+		return replacement_cost;
 	}
 
-	public void setReplacementCost(double replacementCost) {
-		this.replacementCost = replacementCost;
+	public void setReplacement_cost(double replacement_cost) {
+		this.replacement_cost = replacement_cost;
 	}
 
 	public String getRating() {
 		return rating;
 	}
+	public String getMedia_condition() {
+		return media_condition;
+	}
 
+	public String getSpecial_features() {
+		return special_features;
+	}
+	
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
 
-	public String getSpecialFeatures() {
-		return specialFeatures;
+	public void setSpecial_features(String special_features) {
+		this.special_features = special_features;
 	}
 
-	public void setSpecialFeatures(String specialFeatures) {
-		this.specialFeatures = specialFeatures;
+	@Override
+	public String toString() {
+		return "\nFilm ID: " + id + "\nTitle: " + title + "\nYear Released: " + release_year + "\nDescription: "
+				+ description + "\nRating: " + rating + "\nLanguage: " + language_name + "\nActors: " + printActors();
+	}
+	
+	public String toStringAllDetails() {
+		return "\nFilm ID: " + id + "\nTitle: " + title + "\nYear Released: " + release_year + "\nDescription: "
+				+ description + "\nRating: " + rating + "\nLanguage ID: " + language_id + "\nLanguage: " + language_name + "\nCategory: " + category + 
+				"\nRental Rate: $" + rental_rate + "\nFilm Length: " + length + " Minutes"+ "\nReplacement Cost: $" + replacement_cost + 
+				"\nSpecial Features: " + special_features + "\nCondition: " + media_condition + "\nActors: " + printActors();
 	}
 
-//	public List<InventoryItem> getInventoryItems() {
-//		return inventoryItems;
-//	}
-//
-//	public void setInventoryItems(List<InventoryItem> inventoryItems) {
-//		this.inventoryItems = inventoryItems;
-//	}
+	public String printActors() {
+		List<Actor> printActors = this.actors;
+		String actorString = "";
+		for (Actor actor : printActors) {
+			actorString += actor.getFirst_name() + " " + actor.getLast_name() + " | ";
+		}
+		return actorString;
+	}
+
+	public List<Actor> getActors() {
+		return actors;
+	}
+
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
+	}
+
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
+
+	public String getLanguage_name() {
+		return language_name;
+	}
+
+	public void setLanguage_name(String language_name) {
+		this.language_name = language_name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public void setMedia_condition(String media_condition) {
+		this.media_condition = media_condition;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((films == null) ? 0 : films.hashCode());
 		result = prime * result + id;
-		result = prime * result + languageId;
-		result = prime * result + length;
+		result = prime * result + language_id;
+		result = prime * result + ((language_name == null) ? 0 : language_name.hashCode());
+		result = prime * result + ((length == null) ? 0 : length.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
-		result = prime * result + ((releaseYear == null) ? 0 : releaseYear.hashCode());
+		result = prime * result + release_year;
+		result = prime * result + ((rental_duration == null) ? 0 : rental_duration.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(rentalRate);
+		temp = Double.doubleToLongBits(rental_rate);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + rentalDuration;
-		temp = Double.doubleToLongBits(replacementCost);
+		temp = Double.doubleToLongBits(replacement_cost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((specialFeatures == null) ? 0 : specialFeatures.hashCode());
+		result = prime * result + ((special_features == null) ? 0 : special_features.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -200,37 +233,60 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
+		if (actors == null) {
+			if (other.actors != null)
+				return false;
+		} else if (!actors.equals(other.actors))
+			return false;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (films == null) {
+			if (other.films != null)
+				return false;
+		} else if (!films.equals(other.films))
+			return false;
 		if (id != other.id)
 			return false;
-		if (languageId != other.languageId)
+		if (language_id != other.language_id)
 			return false;
-		if (length != other.length)
+		if (language_name == null) {
+			if (other.language_name != null)
+				return false;
+		} else if (!language_name.equals(other.language_name))
+			return false;
+		if (length == null) {
+			if (other.length != null)
+				return false;
+		} else if (!length.equals(other.length))
 			return false;
 		if (rating == null) {
 			if (other.rating != null)
 				return false;
 		} else if (!rating.equals(other.rating))
 			return false;
-		if (releaseYear == null) {
-			if (other.releaseYear != null)
+		if (release_year != other.release_year)
+			return false;
+		if (rental_duration == null) {
+			if (other.rental_duration != null)
 				return false;
-		} else if (!releaseYear.equals(other.releaseYear))
+		} else if (!rental_duration.equals(other.rental_duration))
 			return false;
-		if (Double.doubleToLongBits(rentalRate) != Double.doubleToLongBits(other.rentalRate))
+		if (Double.doubleToLongBits(rental_rate) != Double.doubleToLongBits(other.rental_rate))
 			return false;
-		if (rentalDuration != other.rentalDuration)
+		if (Double.doubleToLongBits(replacement_cost) != Double.doubleToLongBits(other.replacement_cost))
 			return false;
-		if (Double.doubleToLongBits(replacementCost) != Double.doubleToLongBits(other.replacementCost))
-			return false;
-		if (specialFeatures == null) {
-			if (other.specialFeatures != null)
+		if (special_features == null) {
+			if (other.special_features != null)
 				return false;
-		} else if (!specialFeatures.equals(other.specialFeatures))
+		} else if (!special_features.equals(other.special_features))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -239,25 +295,5 @@ public class Film {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-
-		// language its title, year, rating, and description are displayed.
-
-		return "\n\nFilm Information: \ntitle: " + title + ", Year: " + releaseYear + ", rating: " + rating
-				+ ", language: " + language + ",\ndescription: " + description + "\nCAST: " + actors;
-	}
-
-	public String toFullString() {
-
-		return "\n\nFilm Information: \nid: " + id + ", title: " + title + "\ndescription: " + description + "\nYear: "
-				+ releaseYear + ", languageId: " + languageId + ", language: " + language + ", category: " + category
-				+ "\nrentalDuration: " + rentalDuration + ", rentalRate: " + rentalRate + ", length: " + length
-				+ "\nreplacementCost: " + replacementCost + ", rating: " + rating + ", specialFeatures: "
-				+ specialFeatures + "\nActor List: " + actors;
-		
-//		 + "\nInventory Status: " + inventoryItems
-	}
-
+	
 }
