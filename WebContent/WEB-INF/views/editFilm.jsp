@@ -32,37 +32,39 @@
       <br>
 		<h3>Enter the changes You would like to make</h3>
 	<form action="editFilmInfo.do" method="GET">
-		<label for="searchKeyword">Title:</label>
+		<input type="hidden" name="id" value="${film.id }"/>
+		
+		<label for="editFilm">Title:</label>
 		<input type="text" name="title" /> <br>
 		
-		<label for="searchKeyword">Release year:</label>
+		<label for="editFilm">Release year:</label>
 		<input type="number" name="year" /> <br>
 		
-		<label for="searchKeyword">Rating:</label>
+		<label for="editFilm">Rating:</label>
 		<input type="text" name="rating" /> <br>
 		
-		<label for="searchKeyword">Description:</label>
+		<label for="editFilm">Description:</label>
 		<input type="text" name="description" /> <br>
 		
-		<label for="searchKeyword">Language ID:</label>
+		<label for="editFilm">Language ID:</label>
 		<input type="number" name="language_id" /> <br>
 		
-		<label for="searchKeyword">Rental Duration:</label>
+		<label for="editFilm">Rental Duration:</label>
 		<input type="text" name="duration" /> <br>
 		
-		<label for="searchKeyword">Rental rate:</label>
+		<label for="editFilm">Rental rate:</label>
 		<input type="number" step="any" name="rate" /> <br>
 		
-		<label for="searchKeyword">Length:</label>
+		<label for="editFilm">Length:</label>
 		<input type="text" name="length" /> <br>
 		
-		<label for="searchKeyword">Category:</label>
+		<label for="editFilm">Category:</label>
 		<input type="text" name="category" /> <br>
 		
-		<label for="searchKeyword">Special Features:</label>
+		<label for="editFilm">Special Features:</label>
 		<input type="text" name="features" /> <br>
 		
-		<label for="searchKeyword">Media condition:</label>
+		<label for="editFilm">Media condition:</label>
 		<input type="text" name="media" /> <br>
 		
 <!-- 	Stretch goals, insert or delete a film actor -->

@@ -46,10 +46,58 @@ public class FilmController {
 
 	@RequestMapping(path = "editFilmInfo.do", params = { "title", "description", "year", "length",
 			"features", "rating", "language_id", "duration", "rate", "category",
-			"media" }, method = RequestMethod.GET)
-	public ModelAndView editFilm(String title, String description, String year, String length,
-			String features, String rating, String language_id, String duration, String rate, String category,
-			String media) {
+			"media", "id" }, method = RequestMethod.GET)
+	public ModelAndView editFilm(String title, String description, int year, String length,
+			String features, String rating, int language_id, String duration, double rate, String category,
+			String media, int id) {
+		ModelAndView mv = new ModelAndView();
+		Film film = null;
+		
+		try {
+			film = dao.getFilmById(id);
+			if (title != null && title != "") {
+				film.setTitle(title);
+			}
+			if (description != null && description != "") {
+				film.setDescription(description);
+			}
+			if ( year >= 1901 && year <= 2155) {
+				film.setRelease_year(year);
+			}
+			if (length != null && length != "") {
+				film.setLength(length);
+			}
+			if (features != null && features != "") {
+				film.setSpecial_features(features);
+			}
+			if (rating != null && rating != "") {
+				film.setRating(rating);
+			}
+			if (language_id > 0 && language_id <7) {						//Add top limit
+				film.setLanguage_id(language_id);
+			}
+			if (duration != null && duration != "") {
+				film.setRental_duration(duration);
+			}
+			if (rate > 0) {
+				film.setRental_rate(rate);
+			}
+			if (category != null && category != "") {
+				film.setCategory(category);
+			}
+			if (media != null && media != "") {
+				film.setMedia_condition(media);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 		
 		return null;
 

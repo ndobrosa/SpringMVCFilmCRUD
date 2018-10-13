@@ -219,4 +219,16 @@ public class FilmDAOImpl implements FilmDAO {
 		return actorsByFilm;
 	}
 
+	@Override
+	public Film editFilm(Film film) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteFilm(Film film) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
