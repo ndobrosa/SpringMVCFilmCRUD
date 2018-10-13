@@ -25,19 +25,19 @@
 		<h3>Add a Film</h3>
 	<form action="addFilm.do" method="GET">
 		<label for="title">Enter a title:</label>
-		<input type="text" name="addFilm" /><br>
+		<input type="text" name="title" /><br>
 		
 		<label for="description">Enter a Description:</label>
-		<input type="text" name="addFilm" /><br>
+		<input type="text" name="description" /><br>
 		
 		<label for="release_year">Enter a Release Year:</label>
-		<input type="number" name="addFilm" /><br>
+		<input type="number" name="release_year" /><br>
 		
 		<label for="length">Enter Film Length(minutes):</label>
-		<input type="text" name="addFilm" /><br>
+		<input type="text" name="length" /><br>
 		
 		<label for="special_features">Enter Special Features:</label>
-		<input type="text" name="addFilm" /><br>
+		<input type="text" name="special_features" /><br>
 		
 		<input type="submit" value="Add New Film" />
 	</form>

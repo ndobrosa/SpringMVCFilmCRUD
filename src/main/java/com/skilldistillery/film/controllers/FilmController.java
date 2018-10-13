@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,13 +64,14 @@ public class FilmController {
 
 	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length",
 			"special_features" }, method = RequestMethod.GET)
-	public ModelAndView addFilmToDB(String title, String description, int release_year, String length,
+	public ModelAndView addFilmToDB( String title, String description, int release_year, String length,
 			String special_features) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
 		if (validInputs(title, description, release_year, length, special_features)) {
 
 			film = new Film(title, description, release_year, length, special_features);
+			System.out.println(title + " " + description + " " + length + " " + release_year + " " + special_features);
 			dao.addFilm(film);
 			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/result.jsp");

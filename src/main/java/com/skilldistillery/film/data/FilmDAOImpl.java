@@ -16,7 +16,7 @@ import com.skilldistillery.film.entities.Film;
 
 @Repository
 public class FilmDAOImpl implements FilmDAO {
-	
+
 	// URL to the database
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 
@@ -29,7 +29,7 @@ public class FilmDAOImpl implements FilmDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private final String user = "student";
 	private final String pass = "student";
 
@@ -68,35 +68,37 @@ public class FilmDAOImpl implements FilmDAO {
 		conn.close();
 		System.out.println("\nYour search returned " + (counter) + " result.");
 		return film;
-	}		
+	}
 
 	@Override
 	public Film addFilm(Film newFilm) {
 		Connection conn = null;
-		int updateCount;
-		String sql = "INSERT INTO film (title, description, release_year, language_id, length, special_features)"
-				+ " VALUES (?, ?, ?, 1, ?, ?)";
+		String sql = "Insert into film(language_id, title, description, release_year, length)values(1, ?, ?, ?, ?)";
 
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false);
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, newFilm.getTitle());
 			stmt.setString(2, newFilm.getDescription());
 			stmt.setInt(3, newFilm.getRelease_year());
-			stmt.setInt(4, newFilm.getLanguage_id());
-			stmt.setString(5, newFilm.getLength());
-			stmt.setString(6, newFilm.getSpecial_features());
+			stmt.setString(4, newFilm.getLength());
+//			stmt.setString(6, newFilm.getSpecial_features());
 			// might need to set more parameters here
-			updateCount = stmt.executeUpdate();
+
+			int updateCount = stmt.executeUpdate();
+			System.out.println(updateCount);
+
 			if (updateCount == 1) {
 				ResultSet keys = stmt.getGeneratedKeys();
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
 					newFilm.setId(newFilmId);
 				}
-				
+
 			} else {
 				newFilm = null;
+				conn.rollback();
 			}
 			conn.close();
 
@@ -113,7 +115,7 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return newFilm;
 	}
-      
+
 	@Override
 	public List<Film> getFilmsByKeyword(String keyword) throws SQLException {
 		List<Film> films = new ArrayList<>();
@@ -182,40 +184,38 @@ public class FilmDAOImpl implements FilmDAO {
 		conn.close();
 		return actor;
 
-	}	
-	
+	}
+
 	@Override
 	public List<Actor> getActorsByFilmId(int filmId) throws SQLException {
-			List<Actor> actorsByFilm = new ArrayList<>();
+		List<Actor> actorsByFilm = new ArrayList<>();
 
-			try {
-				Connection conn = DriverManager.getConnection(URL, user, pass);
-				String sql = "SELECT actor.id, actor.first_name, actor.last_name, " + "film_actor.film_id " + "FROM actor "
-						+ "JOIN film_actor " + "ON film_actor.actor_id = actor.id " + "WHERE film_id = ?";
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "SELECT actor.id, actor.first_name, actor.last_name, " + "film_actor.film_id " + "FROM actor "
+					+ "JOIN film_actor " + "ON film_actor.actor_id = actor.id " + "WHERE film_id = ?";
 
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, filmId);
-				ResultSet rs = stmt.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
 
-				while (rs.next()) {
-					int actorId = rs.getInt("id");
-					String firstName = rs.getString("first_name");
-					String lastName = rs.getString("last_name");
-					Actor actor = new Actor(actorId, firstName, lastName);
-					actorsByFilm.add(actor);
-				}
-
-				rs.close();
-				stmt.close();
-				conn.close();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
+			while (rs.next()) {
+				int actorId = rs.getInt("id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				Actor actor = new Actor(actorId, firstName, lastName);
+				actorsByFilm.add(actor);
 			}
 
-			return actorsByFilm;
-		}	
+			rs.close();
+			stmt.close();
+			conn.close();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
+		return actorsByFilm;
+	}
 
 }

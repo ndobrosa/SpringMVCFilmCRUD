@@ -2,10 +2,13 @@ package com.skilldistillery.film.entities;
 
 import java.util.List;
 
+import javax.validation.constraints.Size;
+
 public class Film {
 	private int id;
 	private String title;
 	private String description;
+	@Size(min=1901, max=2155)
 	private int release_year;
 	private int language_id;
 	private String language_name;
@@ -50,6 +53,7 @@ public class Film {
 		this.release_year = release_year;
 		this.length = length;
 		this.special_features = special_features;
+		
 	}
 
 	public Film(String media_condition) {
