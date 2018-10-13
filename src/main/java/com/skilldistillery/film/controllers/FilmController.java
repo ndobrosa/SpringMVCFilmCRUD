@@ -55,7 +55,7 @@ public class FilmController {
 		
 		try {
 			film = dao.getFilmById(id);
-			if (title != null && title != "") {
+			if (title != null && title != "" && title.length()<255) {
 				film.setTitle(title);
 			}
 			if (description != null && description != "") {
@@ -76,15 +76,23 @@ public class FilmController {
 			if (language_id > 0 && language_id <7) {						//Add top limit
 				film.setLanguage_id(language_id);
 			}
-			if (duration != null && duration != "") {
+			
+			try {
+			if (duration != null && duration != "" && Integer.parseInt(duration) < 255 && Integer.parseInt(duration) > 0) {
 				film.setRental_duration(duration);
 			}
+			}
+			catch (NumberFormatException e) {
+			}
+			
 			if (rate > 0) {
 				film.setRental_rate(rate);
 			}
+			
 			if (category != null && category != "") {
 				film.setCategory(category);
 			}
+			
 			if (media != null && media != "") {
 				film.setMedia_condition(media);
 			}
