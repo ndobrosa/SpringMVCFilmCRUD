@@ -33,7 +33,6 @@ public class FilmDAOImpl implements FilmDAO {
 	private final String user = "student";
 	private final String pass = "student";
 
-
 	@Override
 	public Film getFilmById(int filmId) throws SQLException {
 		Film film = null;

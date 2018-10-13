@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +20,19 @@
         <li>Rating: ${film.rating}</li>
         <li>Description: ${film.description}</li>
       </ul>
+    </c:when>
+    
+    <c:when test="${not empty films}">
+      <c:forEach items="${films }" var="f">
+      <ul>
+        <li>Film ID: ${f.id}</li>
+        <li>Title: ${f.title}</li>
+        <li>Release year: ${f.release_year}</li>
+        <li>Rating: ${f.rating}</li>
+        <li>Description: ${f.description}</li> <hr>
+      </ul>
+      </c:forEach>
+      
     </c:when>
     <c:otherwise>
       <p>No film found</p>
