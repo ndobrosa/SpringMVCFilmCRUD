@@ -55,6 +55,8 @@
 			</c:forEach>
 
 		</c:when>
+		<c:when test="${filmFailed }"> Adding Film failed.
+		</c:when>
 		<c:otherwise>
 			<p>No film found</p>
 		</c:otherwise>

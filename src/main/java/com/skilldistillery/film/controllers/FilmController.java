@@ -165,7 +165,14 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		}
-
+		
+		else {
+			mv.addObject("filmFailed",new Boolean(true));
+			mv.setViewName("WEB-INF/views/result.jsp");
+			return mv;
+		}
+		
+		
 		return mv;
 	}
 
@@ -173,7 +180,7 @@ public class FilmController {
 			String special_features) {
 
 		return ((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
-				&& (release_year != null) && (length != null && !length.isEmpty())
+				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty())
 				&& (special_features != null && !special_features.isEmpty()));
 
 	}
