@@ -220,7 +220,6 @@ public class FilmDAOImpl implements FilmDAO {
 	@Override
 	public Film editFilm(Film film) {
 		
-<<<<<<< HEAD
 		if(film == null) {
 			return null;
 		}
@@ -278,9 +277,6 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			throw new RuntimeException("Error while adding the film: " + film);
 		}
-=======
-		
->>>>>>> 8b82c84c196159e01215a41aae5ae72047d10693
 		return film;
 	}
 
