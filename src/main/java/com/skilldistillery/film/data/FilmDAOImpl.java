@@ -66,7 +66,6 @@ public class FilmDAOImpl implements FilmDAO {
 		filmResult.close();
 		stmt.close();
 		conn.close();
-		System.out.println("\nYour search returned " + (counter) + " result.");
 		return film;
 	}
 
@@ -159,7 +158,6 @@ public class FilmDAOImpl implements FilmDAO {
 		filmResult.close();
 		stmt.close();
 		conn.close();
-		System.out.println("Your search returned " + counter + " results.");
 		return films;
 	}
 
