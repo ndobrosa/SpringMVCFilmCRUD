@@ -89,18 +89,16 @@ public class FilmController {
 				film.setMedia_condition(media);
 			}
 			
+			film =dao.editFilm(film);
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/views/result.jsp");
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
-		return null;
-
+		return mv;
 	}
 
 	@RequestMapping(path = "searchById.do", params = "searchID", method = RequestMethod.GET)
