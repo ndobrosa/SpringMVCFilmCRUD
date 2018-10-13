@@ -55,57 +55,58 @@ public class FilmController {
 		
 		try {
 			film = dao.getFilmById(id);
-			if (title != null && title != "" && title.length()<255) {
-				film.setTitle(title);
-			}
-			if (description != null && description != "") {
-				film.setDescription(description);
-			}
-			if ( year >= 1901 && year <= 2155) {
-				film.setRelease_year(year);
-			}
-			if (length != null && length != "") {
-				film.setLength(length);
-			}
-			
-			
-			if (features != null && features != "") {
-				film.setSpecial_features(features);
-			}
-			
-			
-			
-			if (rating != null && rating != "") {
-				film.setRating(rating);
-			}
-			if (language_id > 0 && language_id <7) {						//Add top limit
-				film.setLanguage_id(language_id);
-			}
-			
-			try {
-			if (duration != null && duration != "" && Integer.parseInt(duration) < 255 && Integer.parseInt(duration) > 0) {
-				film.setRental_duration(duration);
-			}
-			}
-			catch (NumberFormatException e) {
-			}
-			
-			if (rate > 0) {
-				film.setRental_rate(rate);
-			}
-			
-			if (category != null && category != "") {
-				film.setCategory(category);
-			}
-			
-			if (media != null && media != "") {
-				film.setMedia_condition(media);
-			}
-			
-			film =dao.editFilm(film);
-			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/views/result.jsp");
-			
+			System.out.println(features);
+//			if (title != null && title != "" && title.length()<255) {
+//				film.setTitle(title);
+//			}
+//			if (description != null && description != "") {
+//				film.setDescription(description);
+//			}
+//			if ( year >= 1901 && year <= 2155) {
+//				film.setRelease_year(year);
+//			}
+//			if (length != null && length != "") {
+//				film.setLength(length);
+//			}
+//			
+//			
+//			if (features != null && features != "") {
+//				film.setSpecial_features(features);
+//			}
+//			
+//			
+//			
+//			if (rating != null && rating != "") {
+//				film.setRating(rating);
+//			}
+//			if (language_id > 0 && language_id <7) {						//Add top limit
+//				film.setLanguage_id(language_id);
+//			}
+//			
+//			try {
+//			if (duration != null && duration != "" && Integer.parseInt(duration) < 255 && Integer.parseInt(duration) > 0) {
+//				film.setRental_duration(duration);
+//			}
+//			}
+//			catch (NumberFormatException e) {
+//			}
+//			
+//			if (rate > 0) {
+//				film.setRental_rate(rate);
+//			}
+//			
+//			if (category != null && category != "") {
+//				film.setCategory(category);
+//			}
+//			
+//			if (media != null && media != "") {
+//				film.setMedia_condition(media);
+//			}
+//			
+//			film =dao.editFilm(film);
+//			mv.addObject("film", film);
+//			mv.setViewName("WEB-INF/views/result.jsp");
+//			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
