@@ -219,8 +219,65 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public Film editFilm(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(film == null) {
+			return null;
+		}
+		
+		Connection conn = null;
+		String sql = "update film\n" + 
+				"    set title = ?,\n" + 
+				"         description = ?,\n" + 
+				"         release_year= ?,\n" + 
+				"         language_id = ?,\n" + 
+				"         rental_duration = ?,\n"+ 
+				"         rental_rate= ?,\n" + 
+				"         length = ?,\n" + 
+				"         replacement_cost = ?,\n" + 
+				"         rating = ?,\n" + 
+				"         special_features = ?\n" + 
+				"where id = ?";
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getRelease_year());
+			stmt.setInt(4, film.getLanguage_id());
+			stmt.setString(5, film.getRental_duration());
+			stmt.setDouble(6, film.getRental_rate());
+			stmt.setString(7, film.getLength());
+			stmt.setDouble(8, film.getReplacement_cost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecial_features());
+			stmt.setInt(11, film.getId());
+			
+			int updateCount = stmt.executeUpdate();
+
+			if (updateCount == 0) {
+				conn.rollback();
+				conn.close();
+				return null;
+			} 
+			else {
+				conn.commit();
+				conn.close();
+			}
+			stmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e2) {
+					System.err.println("Error while rolling back");
+				}
+			}
+			throw new RuntimeException("Error while adding the film: " + film);
+		}
+		return film;
 	}
 
 	@Override
