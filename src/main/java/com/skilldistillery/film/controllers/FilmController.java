@@ -67,9 +67,14 @@ public class FilmController {
 			if (length != null && length != "") {
 				film.setLength(length);
 			}
+			
+			
 			if (features != null && features != "") {
 				film.setSpecial_features(features);
 			}
+			
+			
+			
 			if (rating != null && rating != "") {
 				film.setRating(rating);
 			}
