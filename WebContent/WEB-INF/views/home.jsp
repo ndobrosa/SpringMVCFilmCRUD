@@ -26,14 +26,19 @@
 	<form action="addFilm.do" method="GET">
 		<label for="title">Enter a title:</label>
 		<input type="text" name="addFilm" /><br>
+		
 		<label for="description">Enter a Description:</label>
 		<input type="text" name="addFilm" /><br>
+		
 		<label for="release_year">Enter a Release Year:</label>
-		<input type="text" name="addFilm" /><br>
+		<input type="number" name="addFilm" /><br>
+		
 		<label for="length">Enter Film Length(minutes):</label>
 		<input type="text" name="addFilm" /><br>
+		
 		<label for="special_features">Enter Special Features:</label>
 		<input type="text" name="addFilm" /><br>
+		
 		<input type="submit" value="Add New Film" />
 	</form>
 

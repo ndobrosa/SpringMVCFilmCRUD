@@ -62,10 +62,28 @@ public class FilmController {
 
 	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length",
 			"special_features" }, method = RequestMethod.GET)
-	public ModelAndView addFilmToDB(String title, String description, String release_year, String length, String special_features) {
+	public ModelAndView addFilmToDB(String title, String description, int release_year, String length,
+			String special_features) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
-		
-		return null;
+		if (validInputs(title, description, release_year, length, special_features)) {
+
+			film = new Film(title, description, release_year, length, special_features);
+			dao.addFilm(film);
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/result.jsp");
+
+		}
+
+		return mv;
+	}
+
+	private boolean validInputs(String title, String description, Integer release_year, String length,
+			String special_features) {
+
+		return ((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
+				&& (release_year != null) && (length != null && !length.isEmpty())
+				&& (special_features != null && !special_features.isEmpty()));
+
 	}
 }
