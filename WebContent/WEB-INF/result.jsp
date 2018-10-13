@@ -9,7 +9,7 @@
 <title>Films</title>
 </head>
 <body>
-
+s
   <c:choose>
     <c:when test="${! empty film}">
       <ul>
@@ -24,5 +24,20 @@
       <p>No film found</p>
     </c:otherwise>
   </c:choose>
+  
+		<h3>More Options</h3>
+	<form action="editFilm.do" method="GET">
+		<input type="submit" value="Edit Film" />
+	</form>
+	<br>
+  	<form action="deleteFilm.do" method="GET">
+		<input type="submit" value="Delete Film" />
+	</form>
+	<br>
+  	<form action="index.do" method="GET">
+		<input type="submit" value="Main Menu" />
+	</form>
+	<br>
+
 </body>
 </html>
