@@ -9,6 +9,7 @@
 <title>Films</title>
 </head>
 <body>
+
   <c:choose>
     <c:when test="${! empty film}">
       <ul>
