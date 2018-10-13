@@ -22,10 +22,10 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "searchById.do", params = "searchText", method = RequestMethod.GET)
-	public ModelAndView getFilmById(String searchText) {
+	@RequestMapping(path = "searchById.do", params = "searchID", method = RequestMethod.GET)
+	public ModelAndView getFilmById(String searchID) {
 		ModelAndView mv = new ModelAndView();
-		int filmId = Integer.parseInt(searchText);
+		int filmId = Integer.parseInt(searchID);
 		Film film = null;
 		try {
 			film = dao.getFilmById(filmId);
