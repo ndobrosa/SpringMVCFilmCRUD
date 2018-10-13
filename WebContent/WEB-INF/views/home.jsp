@@ -11,15 +11,15 @@
 		<h3>Search by Film ID</h3>
 	<form action="searchById.do" method="GET">
 		<label for="searchID">Enter an ID:</label> 
-		<input type="text" name="searchID" />
-		<input type="submit" value="search by id" />
+		<input type="text" name="searchID" /> <br>
+		<input type="submit" value="Search By ID" />
 	</form>
 
 		<h3>Search by Keyword</h3>
 	<form action="searchByKeyword.do" method="GET">
 		<label for="searchKeyword">Enter a key:</label>
-		<input type="text" name="searchKeyword" />
-		<input type="submit" value="search by keyword" /><br><br>
+		<input type="text" name="searchKeyword" /> <br>
+		<input type="submit" value="Search By Keyword" /><br>
 	</form>
 
 		<h3>Add a Film</h3>
@@ -34,7 +34,7 @@
 		<input type="text" name="addFilm" /><br>
 		<label for="special_features">Enter Special Features:</label>
 		<input type="text" name="addFilm" /><br>
-		<input type="submit" value="add new film" />
+		<input type="submit" value="Add New Film" />
 	</form>
 
 
