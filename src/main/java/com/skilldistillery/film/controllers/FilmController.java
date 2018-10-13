@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,12 +26,34 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView("WEB-INF/views/home.jsp");
 		return mv;
 	}
-	@RequestMapping("editFilm.do")
-	public ModelAndView editPage() {
-		ModelAndView mv = new ModelAndView("WEB-INF/views/result.jsp");
+
+	@RequestMapping(path = "editFilm.do", params = "id", method = RequestMethod.GET)
+	public ModelAndView editPage(String id) {
+		ModelAndView mv = new ModelAndView();
+		int filmId = Integer.parseInt(id);
+		Film film = null;
+		try {
+			film = dao.getFilmById(filmId);
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/views/editFilm.jsp");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return mv;
 	}
-	
+
+	@RequestMapping(path = "editFilmInfo.do", params = { "title", "description", "year", "length",
+			"features", "rating", "language_id", "duration", "rate", "category",
+			"media" }, method = RequestMethod.GET)
+	public ModelAndView editFilm(String title, String description, String year, String length,
+			String features, String rating, String language_id, String duration, String rate, String category,
+			String media) {
+		
+		return null;
+
+	}
 
 	@RequestMapping(path = "searchById.do", params = "searchID", method = RequestMethod.GET)
 	public ModelAndView getFilmById(String searchID) {
@@ -70,7 +93,7 @@ public class FilmController {
 
 	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length",
 			"special_features" }, method = RequestMethod.GET)
-	public ModelAndView addFilmToDB( String title, String description, int release_year, String length,
+	public ModelAndView addFilmToDB(String title, String description, int release_year, String length,
 			String special_features) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;

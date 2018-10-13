@@ -45,7 +45,7 @@
 		<input type="text" name="description" /> <br>
 		
 		<label for="searchKeyword">Language ID:</label>
-		<input type="number" name="searchKeyword" /> <br>
+		<input type="number" name="language_id" /> <br>
 		
 		<label for="searchKeyword">Rental Duration:</label>
 		<input type="text" name="duration" /> <br>
@@ -59,8 +59,11 @@
 		<label for="searchKeyword">Category:</label>
 		<input type="text" name="category" /> <br>
 		
+		<label for="searchKeyword">Special Features:</label>
+		<input type="text" name="features" /> <br>
+		
 		<label for="searchKeyword">Media condition:</label>
-		<input type="text" name="mediaCondition" /> <br>
+		<input type="text" name="media" /> <br>
 		
 <!-- 	Stretch goals, insert or delete a film actor -->
 		<input type="submit" value="EditFilmInfo" /><br>

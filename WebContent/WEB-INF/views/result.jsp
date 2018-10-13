@@ -12,7 +12,7 @@
 <body>
 
 	<c:choose>
-		<c:when test="${! empty film}">
+		<c:when test="${not empty film}">
 			<ul>
 				<li>Film ID: ${film.id}</li>
 				<li>Title: ${film.title}</li>
@@ -22,6 +22,7 @@
 			</ul>
 			<h3>More Options</h3>
 			<form action="editFilm.do" method="GET">
+				<input type="hidden" name="id" value="${film.id }"/>
 				<input type="submit" value="Edit Film" />
 			</form>
 			<br>
@@ -42,6 +43,7 @@
 				</ul>
 				<h3>More Options</h3>
 				<form action="editFilm.do" method="GET">
+					<input type="hidden" name="id" value="${f.id }"/>
 					<input type="submit" value="Edit Film" />
 				</form>
 				<br>
