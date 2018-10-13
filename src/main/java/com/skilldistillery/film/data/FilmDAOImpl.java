@@ -248,7 +248,44 @@ public class FilmDAOImpl implements FilmDAO {
     }
     @Override
     public boolean deleteFilm(Film film) {
-        // TODO Auto-generated method stub
-        return false;
+    	boolean filmDeleted = false;
+    	
+    	if(film == null) {
+    		return false;
+    	}
+    	 Connection conn = null;
+         String sql = "DELETE FROM film WHERE id = ?";
+         
+         try {
+             conn = DriverManager.getConnection(URL, user, pass);
+             conn.setAutoCommit(false);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             stmt.setInt(1,film.getId());
+             
+             int updateCount = stmt.executeUpdate();
+             if (updateCount == 0) {
+                 conn.rollback();
+                 conn.close();
+                 return false;
+             } 
+             else {
+            	 filmDeleted = true;
+                 conn.commit();
+                 conn.close();
+             }
+             stmt.close();
+         } catch (SQLException e) {
+             e.printStackTrace();
+             if (conn != null) {
+                 try {
+                     conn.rollback();
+                 } catch (SQLException e2) {
+                     System.err.println("Error while rolling back");
+                 }
+             }
+             throw new RuntimeException("Error while adding the film: " + film);
+         }
+    	
+        return filmDeleted;
     }
 }
