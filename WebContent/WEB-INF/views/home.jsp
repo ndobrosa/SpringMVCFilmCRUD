@@ -8,41 +8,32 @@
 </head>
 <body>
 
+		<h3>Search by Film ID</h3>
 	<form action="searchById.do" method="GET">
 		<label for="searchID">Enter an ID:</label> 
 		<input type="text" name="searchID" />
 		<input type="submit" value="search by id" />
 	</form>
 
+		<h3>Search by Keyword</h3>
 	<form action="searchByKeyword.do" method="GET">
 		<label for="searchKeyword">Enter a key:</label>
 		<input type="text" name="searchKeyword" />
-		<input type="submit" value="search by keyword" />
+		<input type="submit" value="search by keyword" /><br><br>
 	</form>
 
+		<h3>Add a Film</h3>
 	<form action="addFilm.do" method="GET">
 		<label for="title">Enter a title:</label>
-		<input type="text" name="addFilm" />
+		<input type="text" name="addFilm" /><br>
 		<label for="description">Enter a Description:</label>
-		<input type="text" name="addFilm" />
+		<input type="text" name="addFilm" /><br>
 		<label for="release_year">Enter a Release Year:</label>
-		<input type="text" name="addFilm" />
-		<label for="language_id">Enter a language ID:</label>
-		<input type="text" name="addFilm" />
-		<label for="length">Enter a Length:</label>
-		<input type="text" name="addFilm" />
+		<input type="text" name="addFilm" /><br>
+		<label for="length">Enter Film Length(minutes):</label>
+		<input type="text" name="addFilm" /><br>
 		<label for="special_features">Enter Special Features:</label>
-		<input type="text" name="addFilm" />
-		
-		
-		stmt.setString(1, newFilm.getTitle());
-			stmt.setString(2, newFilm.getDescription());
-			stmt.setInt(3, newFilm.getRelease_year());
-			stmt.setInt(4, newFilm.getLanguage_id());
-			stmt.setString(5, newFilm.getLength());
-			stmt.setString(6, newFilm.getSpecial_features());
-		
-		<input type="text" name="addFilm" />
+		<input type="text" name="addFilm" /><br>
 		<input type="submit" value="add new film" />
 	</form>
 
