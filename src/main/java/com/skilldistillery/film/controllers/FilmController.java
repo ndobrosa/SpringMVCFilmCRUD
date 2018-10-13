@@ -22,15 +22,16 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "searchById.do", params = "searchText", method = RequestMethod.GET)
-	public ModelAndView getFilmById(String searchText) {
+	@RequestMapping(path = "searchById.do", params = "searchID", method = RequestMethod.GET)
+	public ModelAndView getFilmById(String searchID) {
 		ModelAndView mv = new ModelAndView();
-		int filmId = Integer.getInteger(searchText);
+		int filmId = Integer.parseInt(searchID);
 		Film film = null;
 		try {
 			film = dao.getFilmById(filmId);
 			mv.addObject(film);
 			mv.setViewName("WEB-INF/result.jsp");
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
