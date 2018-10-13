@@ -100,6 +100,7 @@ public class FilmDAOImpl implements FilmDAO {
 				newFilm = null;
 				conn.rollback();
 			}
+			conn.commit();
 			conn.close();
 
 		} catch (SQLException e) {

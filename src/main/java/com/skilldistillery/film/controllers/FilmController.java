@@ -25,6 +25,12 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView("WEB-INF/views/home.jsp");
 		return mv;
 	}
+	@RequestMapping("editFilm.do")
+	public ModelAndView editPage() {
+		ModelAndView mv = new ModelAndView("WEB-INF/views/result.jsp");
+		return mv;
+	}
+	
 
 	@RequestMapping(path = "searchById.do", params = "searchID", method = RequestMethod.GET)
 	public ModelAndView getFilmById(String searchID) {
@@ -34,7 +40,7 @@ public class FilmController {
 		try {
 			film = dao.getFilmById(filmId);
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/result.jsp");
+			mv.setViewName("WEB-INF/views/result.jsp");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -52,7 +58,7 @@ public class FilmController {
 		try {
 			films = dao.getFilmsByKeyword(searchKeyword);
 			mv.addObject("films", films);
-			mv.setViewName("WEB-INF/result.jsp");
+			mv.setViewName("WEB-INF/views/result.jsp");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -74,7 +80,7 @@ public class FilmController {
 			System.out.println(title + " " + description + " " + length + " " + release_year + " " + special_features);
 			dao.addFilm(film);
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/result.jsp");
+			mv.setViewName("WEB-INF/views/result.jsp");
 
 		}
 
