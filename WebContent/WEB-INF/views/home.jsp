@@ -11,7 +11,7 @@
 		<h3>Search by Film ID</h3>
 	<form action="searchById.do" method="GET">
 		<label for="searchID">Enter an ID:</label> 
-		<input type="text" name="searchID" /> <br>
+		<input type="number" name="searchID" /> <br>
 		<input type="submit" value="Search By ID" />
 	</form>
 
