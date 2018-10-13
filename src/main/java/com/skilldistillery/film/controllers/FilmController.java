@@ -48,15 +48,24 @@ public class FilmController {
 		List<Film> films = new ArrayList<>();
 		films = null;
 		try {
-			films = dao.getFilmByKeyword(searchKeyword);
+			films = dao.getFilmsByKeyword(searchKeyword);
 			mv.addObject("films", films);
 			mv.setViewName("WEB-INF/result.jsp");
-		
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return mv;
 
+	}
+
+	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length",
+			"special_features" }, method = RequestMethod.GET)
+	public ModelAndView addFilmToDB(String title, String description, String release_year, String length, String special_features) {
+		ModelAndView mv = new ModelAndView();
+		Film film = null;
+		
+		return null;
 	}
 }

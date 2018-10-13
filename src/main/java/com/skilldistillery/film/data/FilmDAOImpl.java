@@ -115,7 +115,7 @@ public class FilmDAOImpl implements FilmDAO {
 	}
       
 	@Override
-	public List<Film> getFilmByKeyword(String keyword) throws SQLException {
+	public List<Film> getFilmsByKeyword(String keyword) throws SQLException {
 		List<Film> films = new ArrayList<>();
 
 		String sql = "SELECT film.id, title, description, release_year, rating, language_id, language.name "
