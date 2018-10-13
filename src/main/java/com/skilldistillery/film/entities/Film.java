@@ -15,7 +15,6 @@ public class Film {
 	private String category;
 	private String media_condition;
 	private List<Actor> actors;
-	private List<Film> films;
 
 	public Film() {
 
@@ -172,13 +171,6 @@ public class Film {
 		this.actors = actors;
 	}
 
-	public List<Film> getFilms() {
-		return films;
-	}
-
-	public void setFilms(List<Film> films) {
-		this.films = films;
-	}
 
 	public String getLanguage_name() {
 		return language_name;
@@ -206,7 +198,6 @@ public class Film {
 		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((films == null) ? 0 : films.hashCode());
 		result = prime * result + id;
 		result = prime * result + language_id;
 		result = prime * result + ((language_name == null) ? 0 : language_name.hashCode());
@@ -247,11 +238,6 @@ public class Film {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;
-		if (films == null) {
-			if (other.films != null)
-				return false;
-		} else if (!films.equals(other.films))
 			return false;
 		if (id != other.id)
 			return false;
