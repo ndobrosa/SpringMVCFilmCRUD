@@ -219,8 +219,9 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public Film editFilm(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return film;
 	}
 
 	@Override
