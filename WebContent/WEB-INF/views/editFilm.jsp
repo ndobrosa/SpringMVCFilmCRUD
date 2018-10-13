@@ -23,7 +23,7 @@
         <li>Language: ${film.language_name }</li>
         <li>Rental Duration: ${film.rental_duration }</li>
         <li>Rental rate: ${film.rental_rate }</li>
-        <li>Length: ${film.length }</li>
+        <li>Length: ${film.length } minutes</li>
         <li>Category: ${film.category }</li>
         <li>Media condition: ${film.media_condition }</li>
         <li>Actors: ${actors }</li>
@@ -41,7 +41,11 @@
 		<input type="number" name="year" value="${film.release_year}"/> <br>
 		
 		<label for="editFilm">Rating:</label>
-		<input type="text" name="rating" value="${film.rating}"/> <br>
+		<input type="radio" name="rating" value="G" />
+		<input type="radio" name="rating" value="PG" />
+		<input type="radio" name="rating" value="PG13" />
+		<input type="radio" name="rating" value="R" />
+		<input type="radio" name="rating" value="NC17" />
 		
 		<label for="editFilm">Description:</label>
 		<input type="text" name="description" value="${film.description}"/> <br>
