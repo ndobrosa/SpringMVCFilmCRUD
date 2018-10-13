@@ -40,18 +40,43 @@
 		<label for="editFilm">Release year:</label>
 		<input type="number" name="year" value="${film.release_year}"/> <br>
 		
+<!-- 		<label for="editFilm">Rating:</label>
+		G <input type="radio" name="rating" value="G" />
+		PG <input type="radio" name="rating" value="PG" /> 
+		PG13 <input type="radio" name="rating" value="PG13" />
+		R <input type="radio" name="rating" value="R" />
+		NC17 <input type="radio" name="rating" value="NC17" />
+		<br> -->
+		
 		<label for="editFilm">Rating:</label>
-		<input type="radio" name="rating" value="G" />
-		<input type="radio" name="rating" value="PG" />
-		<input type="radio" name="rating" value="PG13" />
-		<input type="radio" name="rating" value="R" />
-		<input type="radio" name="rating" value="NC17" />
+		<select name="rating">
+  			<option value="G">G</option>
+ 			<option value="PG">PG</option>
+  			<option value="PG13">PG13</option>
+ 			 <option value="R">R</option>
+ 			 <option value="NC17">NC17</option>
+		</select>
+		
+		<br>
 		
 		<label for="editFilm">Description:</label>
 		<input type="text" name="description" value="${film.description}"/> <br>
 		
-		<label for="editFilm">Language ID:</label>
-		<input type="number" name="language_id" value="${film.language_id}"/> <br>
+<%-- 		<label for="editFilm">Language ID:</label>
+		<input type="number" name="language_id" value="${film.language_id}"/> <br> --%>
+		<label for="editFilm">Language (ID automatically adjusted):</label>
+		<select name="language">
+			<option value="${film.language_id }">${film.language_name }</option>
+  			<option value="1">English</option>
+ 			<option value="2">Italian</option>
+  			<option value="3">Japanese</option>
+ 			<option value="4">Mandarin</option>
+ 			<option value="5">French</option>
+ 			<option value="6">German</option>
+		</select>
+		
+		<br>
+		
 		
 		<label for="editFilm">Rental Duration:</label>
 		<input type="text" name="duration" value="${film.rental_duration}"/> <br>
@@ -62,14 +87,56 @@
 		<label for="editFilm">Length:</label>
 		<input type="text" name="length" value="${film.length}"/> <br>
 		
+<%-- 		<label for="editFilm">Category:</label>
+		<input type="text" name="category" value="${film.category}"/> <br> --%>
+		
 		<label for="editFilm">Category:</label>
-		<input type="text" name="category" value="${film.category}"/> <br>
+		<select name="category">
+			<option value="${film.category }">${film.category }</option>
+  			<option value="Action">Action</option>
+ 			<option value="Animation">Animation</option>
+  			<option value="Children">Children</option>
+ 			<option value="Classics">Classics</option>
+  			<option value="Comedy">Comedy</option>
+ 			<option value="Documentary">Documentary</option>
+  			<option value="Drama">Drama</option>
+ 			<option value="Family">Family</option>
+			<option value="Foreign">Foreign</option>
+			<option value="Games">Games</option>
+			<option value="Horror">Horror</option>
+			<option value="Music">Music</option>
+			<option value="New">New</option>
+			<option value="Sci-Fi">Sci-Fi</option>
+			<option value="Sports">Sports</option>
+			<option value="Travel">Travel</option>
+		</select>
+	    <br>
 		
 		<label for="editFilm">Special Features:</label>
-		<input type="text" name="features" value="${film.special_features}"/> <br>
+<%-- 		<input type="text" name="features" value="${film.special_features}"/> <br> --%>
+				<br>
+				<input type="checkbox" id="Trailers" name="features" value="Trailers"> <label
+                for="Trailers">Trailers</label><br>
+                <input type="checkbox" id="Commentaries" name="features" value="Commentaries"> <label
+                for="Commentaries">Commentaries</label><br> 
+                <input type="checkbox" id="Deleted Scenes" name="features" value="Deleted Scenes"> <label
+                for="Deleted Scenes">Deleted Scenes</label><br> 
+                <input type="checkbox" id="Behind the Scenes" name="features" value="Behind the Scenes"> <label
+                for="Behind the Scenes">Behind the Scenes</label><br> 
+                                
+<%-- 		<label for="editFilm">Media condition:</label>
+		<input type="text" name="media" value="${film.media_condition}"/> <br> --%>
 		
-		<label for="editFilm">Media condition:</label>
-		<input type="text" name="media" value="${film.media_condition}"/> <br>
+		<label for="editFilm">Media Condition:</label>
+		<select name="media">
+  			<option value="${film.media_condition }">${film.media_condition }</option>
+  			<option value="New">New</option>
+ 			<option value="Used">Used</option>
+  			<option value="Damaged">Damaged</option>
+ 			<option value="Lost">Lost</option>
+ 			<option value="NA">Not Applicable</option>
+		</select>
+		 			 <br>
 		
 <!-- 	Stretch goals, insert or delete a film actor -->
 		<input type="submit" value="Edit Film Info" /><br>
