@@ -27,6 +27,7 @@
 			</form>
 			<br>
 			<form action="deleteFilm.do" method="GET">
+				<input type="hidden" name="id" value="${film.id }"/>
 				<input type="submit" value="Delete Film" />
 			</form>
 			<br>
@@ -48,6 +49,7 @@
 				</form>
 				<br>
 				<form action="deleteFilm.do" method="GET">
+					<input type="hidden" name="id" value="${f.id }" />
 					<input type="submit" value="Delete Film" />
 				</form>
 				<br>
