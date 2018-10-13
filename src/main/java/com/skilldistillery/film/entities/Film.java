@@ -186,7 +186,6 @@ public class Film {
 		this.actors = actors;
 	}
 
-
 	public String getLanguage_name() {
 		return language_name;
 	}
