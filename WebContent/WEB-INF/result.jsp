@@ -21,7 +21,7 @@
         <li>Description: ${film.description}</li>
       </ul>
     </c:when>
-    <c:when test="${! empty films}">
+    <c:when test="${not empty films}">
       <c:forEach items="${films }" var="f">
       <ul>
         <li>Film ID: ${f.id}</li>
