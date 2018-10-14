@@ -3,32 +3,22 @@
 
 ## Program Overview
 
-The program itself is connected to a large database that consists of 1000 films.  The
-database also consists of each films various details along with the actors who played in
-each film.
+This program is connected to a large database that consists of 1000 films.  The
+database also consists of various details about each film including title, description, release year, rating, etc. 
 
-Once the program is run, the user will be prompted with a main menu allowing them to 
-search for a film by id, by keyword, or to exit the program.
+Once the program is run, the user is displayed with a main menu on a web page using a local server. The main menu includes the options to look up a film by an ID, look up a film by keyword, or to add a film into the database. In addition, the user has the options to edit or delete each film once it has been found by the database. 
 
-If the user should choose to search for a film by id, the user will then be prompted to 
-enter a film id. Once entered the user will be shown limited details regarding that film. 
-A sub-menu will then populate the screen asking the user if they would like to get more 
-details about that film or to return to the main menu.
+If the user should choose to search for a film by id, the user will be shown a list of details regarding that film.  Under these details, they will be given the option to edit or delete that film. 
 
-If the user chooses to see more details, they will be shown a much more extensive list of
-the film details. If they choose to return to the main menu, the main menu screen will 
-populate for the user. 
+If the user chooses to edit that film, they will be shown all of the details about that film. Under the details, they will be provided with a couple of text boxes and drop down menu's allowing the user to change each of the details. Once the user submits their edits, that films details will be changed in the database.
 
-If the search by keyword option is chosen, the user will be asked to enter their 
-'keyword'. Once the keyword is entered the program will search for a title or a 
-description of a movie that contains the contents of the keyword. Each and every result
-will be shown to the user spaced in a way to be easily read by the user. 
+If the user searches for a films using a keyword, each of the films that contains that keyword will be displayed. The user has the option of editing or deleting each of the films. 
 
-If a user chooses a film ID or a keyword that does not exist in the database, they will 
-be told that 0 results were returned and they may proceed as they would like from there.
+If a user chooses to add a film, the user must enter each of the fields displayed as they are required by the database. Once the film has been added by the user, the film will be added into the database and can be searched for in the search by ID option. 
 
 
 ## Technology / Techniques Practiced 
+
 * Spring API
 * Gradle
 * MySQL
@@ -45,3 +35,5 @@ be told that 0 results were returned and they may proceed as they would like fro
 
 
 ## Lessons Learned
+
+My group and I can all collectively agree that communication was the most important aspect of this project. In addition, we learned the importance of pair programming. We were able to see issues with much more ease with three sets of eyes on the code.  
