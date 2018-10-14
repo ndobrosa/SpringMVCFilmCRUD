@@ -43,15 +43,17 @@ public class FilmController {
 		}
 		return mv;
 	}
-	
-	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "rate", "length", "category", "features", "media", }, method = RequestMethod.POST)
-	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, Double rate, String length, String category, String features, String media) {
-				
+
+	@RequestMapping(path = "editFilmInfo.do", params = { "id", "title", "year", "rating", "description", "language_id",
+			"rate", "length", "category", "features", "media", }, method = RequestMethod.POST)
+	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id,
+			Double rate, String length, String category, String features, String media) {
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/result.jsp");
 		Film film = null;
 		int langid = Integer.parseInt(language_id);
-		
+
 		try {
 			film = dao.getFilmById(id);
 			film.setId(id);
@@ -62,14 +64,14 @@ public class FilmController {
 				film.setRelease_year(year);
 			}
 			if (rating != null && !rating.equals("None")) {
-			film.setRating(rating);
+				film.setRating(rating);
 			}
 			if (description != null && !description.isEmpty()) {
 				film.setDescription(description);
 			}
 			film.setLanguage_id(langid);
 			if (rate != null) {
-			film.setRental_rate(rate);
+				film.setRental_rate(rate);
 			}
 			if (length != null && !length.isEmpty()) {
 				film.setLength(length);
@@ -78,18 +80,17 @@ public class FilmController {
 			if (features != null && !features.isEmpty()) {
 				film.setSpecial_features(features);
 			}
-			film.setMedia_condition(media); 
-			
+			film.setMedia_condition(media);
+
 			if (dao.editFilm(film) != null) {
 				mv.addObject(film);
 				mv.setViewName("WEB-INF/views/result.jsp");
 			}
-			
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mv;
 	}
 
@@ -104,7 +105,6 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -129,8 +129,10 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length"}, method = RequestMethod.POST)
-	public ModelAndView addFilmToDB(String title, String description, int release_year, String length) throws SQLException {
+	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year",
+			"length" }, method = RequestMethod.POST)
+	public ModelAndView addFilmToDB(String title, String description, int release_year, String length)
+			throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
 		if (validInputs(title, description, release_year, length)) {
@@ -142,46 +144,47 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		}
-		
+
 		else {
-			mv.addObject("filmFailed",new Boolean(true));
+			mv.addObject("filmFailed", new Boolean(true));
 			mv.setViewName("WEB-INF/views/home.jsp");
 			return mv;
 		}
-		
+
 		return mv;
 	}
-	
-	@RequestMapping(path= "deleteFilm.do", params="id", method = RequestMethod.GET)
+
+	@RequestMapping(path = "deleteFilm.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView deleteFilmFromDb(String id) {
 		ModelAndView mv = new ModelAndView();
 		int filmId = Integer.parseInt(id);
-		
+
 		try {
 			Film film = dao.getFilmById(filmId);
 			boolean filmDeleted = dao.deleteFilm(film);
-			
-			if(filmDeleted) {
+
+			if (filmDeleted) {
 				mv.setViewName("WEB-INF/views/home.jsp");
-			}
-			else {
-				
+			} else {
+
 				mv.setViewName("WEB-INF/views/home.jsp");
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return mv;
-		
+
 	}
-	
+
 	private boolean validInputs(String title, String description, Integer release_year, String length) {
 		System.out.println((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
-				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty()));
+				&& (release_year != null && release_year < 2156 && release_year > 1900)
+				&& (length != null && !length.isEmpty()));
 
 		return ((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
-				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty()));
+				&& (release_year != null && release_year < 2156 && release_year > 1900)
+				&& (length != null && !length.isEmpty()));
 
 	}
 }
