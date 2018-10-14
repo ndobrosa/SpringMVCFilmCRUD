@@ -19,6 +19,13 @@
 				<li>Release year: ${film.release_year}</li>
 				<li>Rating: ${film.rating}</li>
 				<li>Description: ${film.description}</li>
+				<li>Category: ${film.category}</li>
+				<li>Actors: </li> 
+					<ul>
+        				<c:forEach items="${film.actors}" var="actor">
+  			  				<li>${actor}</li>
+						</c:forEach>
+					</ul>
 			</ul>
 			<h3>More Options</h3>
 			<form action="editFilm.do" method="GET">
