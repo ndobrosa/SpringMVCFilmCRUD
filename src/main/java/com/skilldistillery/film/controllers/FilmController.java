@@ -94,25 +94,23 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length",
-			"special_features" }, method = RequestMethod.GET)
-	public ModelAndView addFilmToDB(String title, String description, int release_year, String length,
-			String special_features) {
+	@RequestMapping(path = "addFilm.do", params = { "title", "description", "release_year", "length"}, method = RequestMethod.POST)
+	public ModelAndView addFilmToDB(String title, String description, int release_year, String length) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
-		if (validInputs(title, description, release_year, length, special_features)) {
+		if (validInputs(title, description, release_year, length)) {
 
-			film = new Film(title, description, release_year, length, special_features);
-			System.out.println(title + " " + description + " " + length + " " + release_year + " " + special_features);
+			film = new Film(title, description, release_year, length);
+			System.out.println(title + " " + description + " " + length + " " + release_year);
 			dao.addFilm(film);
-			mv.addObject("film", film);
+			mv.addObject("film", dao.getFilmById(film.getId()));
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		}
 		
 		else {
 			mv.addObject("filmFailed",new Boolean(true));
-			mv.setViewName("WEB-INF/views/result.jsp");
+			mv.setViewName("WEB-INF/views/home.jsp");
 			return mv;
 		}
 		
@@ -125,6 +123,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		int filmId = Integer.parseInt(id);
 		
+		
 		try {
 			Film film = dao.getFilmById(filmId);
 			boolean filmDeleted = dao.deleteFilm(film);
@@ -134,7 +133,7 @@ public class FilmController {
 			}
 			else {
 				
-				// film wasnt deleted. inform user
+				mv.setViewName("WEB-INF/views/home.jsp");
 				
 			}
 		} catch (SQLException e) {
@@ -143,13 +142,15 @@ public class FilmController {
 		return mv;
 		
 	}
+	
+	
 
-	private boolean validInputs(String title, String description, Integer release_year, String length,
-			String special_features) {
+	private boolean validInputs(String title, String description, Integer release_year, String length) {
+		System.out.println((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
+				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty()));
 
 		return ((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
-				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty())
-				&& (special_features != null && !special_features.isEmpty()));
+				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty()));
 
 	}
 }
