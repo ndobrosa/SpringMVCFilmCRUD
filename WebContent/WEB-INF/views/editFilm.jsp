@@ -69,23 +69,21 @@
 		
 <%-- 		<label for="editFilm">Language ID:</label>
 		<input type="number" name="language_id" value="${film.language_id}"/> <br> --%>
-		<label for="editFilm">Language (ID automatically adjusted):</label>
+		<label for="editFilm">Language (ID):</label>
 		<select name="language_id" type="number">
-			<option value="${film.language_id }">${film.language_name }</option>
-  			<option value="1">English</option>
- 			<option value="2">Italian</option>
-  			<option value="3">Japanese</option>
- 			<option value="4">Mandarin</option>
- 			<option value="5">French</option>
- 			<option value="6">German</option>
+  			<option value="1">English (1)</option>
+ 			<option value="2">Italian (2)</option>
+  			<option value="3">Japanese (3)</option>
+ 			<option value="4">Mandarin (4)</option>
+ 			<option value="5">French (5)</option>
+ 			<option value="6">German ()</option>
 		</select>
 		
 		<br>
 		
-		
-		<label for="editFilm">Rental Duration:</label>
+		<%-- <label for="editFilm">Rental Duration:</label>
 		<input type="text" name="duration" value="${film.rental_duration}"/> <br>
-		
+		 --%>
 		<label for="editFilm">Rental rate:</label>
 		<input type="number" step="any" name="rate" value="${film.rental_rate}"/> <br>
 		
@@ -97,7 +95,6 @@
 		
 		<label for="editFilm">Category:</label>
 		<select name="category">
-			<option value="${film.category }">${film.category }</option>
   			<option value="Action">Action</option>
  			<option value="Animation">Animation</option>
   			<option value="Children">Children</option>
@@ -134,7 +131,6 @@
 		
 		<label for="editFilm">Media Condition:</label>
 		<select name="media">
-  			<option value="${film.media_condition }">${film.media_condition }</option>
   			<option value="New">New</option>
  			<option value="Used">Used</option>
   			<option value="Damaged">Damaged</option>

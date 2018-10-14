@@ -41,15 +41,12 @@ public class FilmDAOImpl implements FilmDAO {
 			film.setDescription(filmResult.getString("description"));
 			film.setRelease_year(filmResult.getInt("release_year"));
 			film.setLanguage_id(filmResult.getInt("language_id"));
-//			film.setLanguage_name(filmResult.getString("language.name"));
 			film.setRating(filmResult.getString("rating"));
 			film.setRental_rate(filmResult.getDouble("rental_rate"));
 			film.setLength(filmResult.getString("length"));
-//			film.setCategory(filmResult.getString("category.name"));
 			film.setReplacement_cost(filmResult.getDouble("replacement_cost"));
 			film.setSpecial_features(filmResult.getString("special_features"));
-//			film.setMedia_condition(filmResult.getString("media_condition"));
-//			film.setActors(getActorsByFilmId(filmId));
+			film.setActors(getActorsByFilmId(filmId));
         }
         if (film == null) {
             System.out.println("\nWe apologize, but there is no title with that ID in our library.");

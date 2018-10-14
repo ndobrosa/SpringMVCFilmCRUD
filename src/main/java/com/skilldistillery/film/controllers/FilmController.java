@@ -44,13 +44,12 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "duration", "rate", "length", "category","features", "media", }, method = RequestMethod.POST)
-	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, String duration, double rate, String length, String category, String features, String media) {
-		
-		System.out.println(features);
-		
+	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "rate", "length", "category","features", "media", }, method = RequestMethod.POST)
+	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, double rate, String length, String category, String features, String media) {
+				
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/result.jsp");
+		Film film = new Film();
 		
 		return mv;
 	}
