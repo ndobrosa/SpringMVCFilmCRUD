@@ -118,6 +118,30 @@ public class FilmController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path= "deleteFilm.do", params="id", method = RequestMethod.GET)
+	public ModelAndView deleteFilmFromDb(String id) {
+		ModelAndView mv = new ModelAndView();
+		int filmId = Integer.parseInt(id);
+		
+		try {
+			Film film = dao.getFilmById(filmId);
+			boolean filmDeleted = dao.deleteFilm(film);
+			
+			if(filmDeleted) {
+				mv.setViewName("WEB-INF/views/home.jsp");
+			}
+			else {
+				
+				// film wasnt deleted. inform user
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mv;
+		
+	}
 
 	private boolean validInputs(String title, String description, Integer release_year, String length,
 			String special_features) {
