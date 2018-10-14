@@ -64,8 +64,8 @@ public class FilmController {
 		int filmId = Integer.parseInt(searchID);
 		Film film = null;
 		try {
-			film = dao.getFilmById(filmId);
-			mv.addObject("film", film);
+			Film newFilm = dao.getFilmById(filmId);
+			mv.addObject("film", newFilm);
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		} catch (SQLException e) {

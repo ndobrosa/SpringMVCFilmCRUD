@@ -76,7 +76,6 @@ public class FilmDAOImpl implements FilmDAO {
             stmt.setString(2, newFilm.getDescription());
             stmt.setInt(3, newFilm.getRelease_year());
             stmt.setString(4, newFilm.getLength());
-//          stmt.setString(6, newFilm.getSpecial_features());
             // might need to set more parameters here
             int updateCount = stmt.executeUpdate();
             System.out.println(updateCount);
@@ -86,12 +85,12 @@ public class FilmDAOImpl implements FilmDAO {
                     int newFilmId = keys.getInt(1);
                     newFilm.setId(newFilmId);
                 }
+                conn.commit();
+                conn.close();
             } else {
                 newFilm = null;
                 conn.rollback();
             }
-            conn.commit();
-            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             if (conn != null) {
