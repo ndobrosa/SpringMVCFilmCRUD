@@ -252,19 +252,20 @@ public class FilmDAOImpl implements FilmDAO {
          try {
              conn = DriverManager.getConnection(URL, user, pass);
              conn.setAutoCommit(false);
-             PreparedStatement stmt = conn.prepareStatement(sql);
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
              stmt.setInt(1,film.getId());
              
              int updateCount = stmt.executeUpdate();
-             if (updateCount == 0) {
-                 conn.rollback();
-                 conn.close();
-                 return false;
-             } 
-             else {
+             
+             if (updateCount == 1) {
             	 filmDeleted = true;
                  conn.commit();
                  conn.close();
+             } 
+             else {
+                 conn.rollback();
+                 conn.close();
+                 return false;
              }
              stmt.close();
          } catch (SQLException e) {

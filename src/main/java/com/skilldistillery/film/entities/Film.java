@@ -46,13 +46,12 @@ public class Film {
 	
 	
 
-	public Film(String title, String description, int release_year, String length, String special_features) {
+	public Film(String title, String description, int release_year, String length) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.release_year = release_year;
 		this.length = length;
-		this.special_features = special_features;
 		
 	}
 
