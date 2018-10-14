@@ -39,12 +39,10 @@ public class FilmController {
 
 		} catch (SQLException e) {
 			mv.addObject("actors", film.getActors());
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mv;
 	}
-
 	
 	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "duration", "rate", "length", "category","features", "media", }, method = RequestMethod.POST)
 	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, String duration, double rate, String length, String category, String features, String media) {
@@ -53,7 +51,6 @@ public class FilmController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/result.jsp");
-		
 		
 		return mv;
 	}
@@ -114,7 +111,6 @@ public class FilmController {
 			return mv;
 		}
 		
-		
 		return mv;
 	}
 	
@@ -122,7 +118,6 @@ public class FilmController {
 	public ModelAndView deleteFilmFromDb(String id) {
 		ModelAndView mv = new ModelAndView();
 		int filmId = Integer.parseInt(id);
-		
 		
 		try {
 			Film film = dao.getFilmById(filmId);
@@ -143,8 +138,6 @@ public class FilmController {
 		
 	}
 	
-	
-
 	private boolean validInputs(String title, String description, Integer release_year, String length) {
 		System.out.println((title != null && !title.isEmpty()) && (description != null && !description.isEmpty())
 				&& (release_year != null && release_year < 2156 && release_year > 1900) && (length != null && !length.isEmpty()));
