@@ -102,8 +102,8 @@ public class FilmController {
 
 			film = new Film(title, description, release_year, length);
 			System.out.println(title + " " + description + " " + length + " " + release_year);
-			dao.addFilm(film);
-			mv.addObject("film", dao.getFilmById(film.getId()));
+			film = dao.addFilm(film);
+			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		}
