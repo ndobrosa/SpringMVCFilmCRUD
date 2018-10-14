@@ -38,6 +38,7 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/editFilm.jsp");
 
 		} catch (SQLException e) {
+			mv.addObject("actors", film.getActors());
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

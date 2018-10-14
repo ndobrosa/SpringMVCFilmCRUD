@@ -26,7 +26,12 @@
         <li>Length: ${film.length } minutes</li>
         <li>Category: ${film.category }</li>
         <li>Media condition: ${film.media_condition }</li>
-        <li>Actors: ${actors }</li>
+        <li>Actors: </li> <ul>
+        <c:forEach items="${film.actors}" var="actor">
+  			  <li>${actor}</li>
+		</c:forEach>
+		</ul>
+        
       </ul>
       
       <br>
