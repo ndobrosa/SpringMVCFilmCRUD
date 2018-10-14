@@ -62,10 +62,10 @@ public class FilmController {
 	public ModelAndView getFilmById(String searchID) {
 		ModelAndView mv = new ModelAndView();
 		int filmId = Integer.parseInt(searchID);
-		Film film = null;
+		Film film = new Film();
 		try {
-			Film newFilm = dao.getFilmById(filmId);
-			mv.addObject("film", newFilm);
+			film = dao.getFilmById(filmId);
+			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/views/result.jsp");
 
 		} catch (SQLException e) {

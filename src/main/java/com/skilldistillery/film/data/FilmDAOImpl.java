@@ -28,12 +28,7 @@ public class FilmDAOImpl implements FilmDAO {
     @Override
     public Film getFilmById(int filmId) throws SQLException {
         Film film = null;
-        String sql = "SELECT film.id, title, description, release_year, language_id, language.name, film.rating, "
-				+ "category.name, rental_rate, length, replacement_cost, special_features, inventory_item.media_condition "
-				+ "FROM film " + "JOIN language " + "ON language.id = film.language_id " + "JOIN film_category "
-				+ "ON film.id = film_category.film_id " + "JOIN category "
-				+ "ON film_category.category_id = category.id " + "JOIN inventory_item "
-				+ "ON film.id = inventory_item.film_id " + "WHERE film.id = ?";
+        String sql = "SELECT * from film WHERE id = ?";
         
         Connection conn = DriverManager.getConnection(URL, user, pass);
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -46,15 +41,15 @@ public class FilmDAOImpl implements FilmDAO {
 			film.setDescription(filmResult.getString("description"));
 			film.setRelease_year(filmResult.getInt("release_year"));
 			film.setLanguage_id(filmResult.getInt("language_id"));
-			film.setLanguage_name(filmResult.getString("language.name"));
+//			film.setLanguage_name(filmResult.getString("language.name"));
 			film.setRating(filmResult.getString("rating"));
 			film.setRental_rate(filmResult.getDouble("rental_rate"));
 			film.setLength(filmResult.getString("length"));
-			film.setCategory(filmResult.getString("category.name"));
+//			film.setCategory(filmResult.getString("category.name"));
 			film.setReplacement_cost(filmResult.getDouble("replacement_cost"));
 			film.setSpecial_features(filmResult.getString("special_features"));
-			film.setMedia_condition(filmResult.getString("media_condition"));
-			film.setActors(getActorsByFilmId(filmId));
+//			film.setMedia_condition(filmResult.getString("media_condition"));
+//			film.setActors(getActorsByFilmId(filmId));
         }
         if (film == null) {
             System.out.println("\nWe apologize, but there is no title with that ID in our library.");
@@ -102,6 +97,7 @@ public class FilmDAOImpl implements FilmDAO {
             }
             throw new RuntimeException("Error while adding the film: " + newFilm);
         }
+        System.out.println(newFilm.getId());
         return newFilm;
     }
     @Override

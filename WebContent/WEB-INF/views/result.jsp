@@ -12,7 +12,7 @@
 <body>
 
 	<c:choose>
-		<c:when test="${not empty film}">
+		<c:when test="${not empty film}">     
 			<ul>
 				<li>Film ID: ${film.id}</li>
 				<li>Title: ${film.title}</li>
