@@ -55,6 +55,7 @@
 		
 		<label for="editFilm">Rating:</label>
 		<select name="rating">
+			<optionl value= "none">None</option>
   			<option value="G">G</option>
  			<option value="PG">PG</option>
   			<option value="PG13">PG13</option>

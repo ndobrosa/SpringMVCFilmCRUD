@@ -44,12 +44,51 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "rate", "length", "category","features", "media", }, method = RequestMethod.POST)
-	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, double rate, String length, String category, String features, String media) {
+	@RequestMapping(path = "editFilmInfo.do",params = {"id", "title", "year", "rating", "description", "language_id", "rate", "length", "category", "features", "media", }, method = RequestMethod.POST)
+	public ModelAndView editFilm(int id, String title, int year, String rating, String description, String language_id, Double rate, String length, String category, String features, String media) {
 				
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/result.jsp");
-		Film film = new Film();
+		Film film = null;
+		int langid = Integer.parseInt(language_id);
+		
+		try {
+			film = dao.getFilmById(id);
+			film.setId(id);
+			if (title != null && !title.isEmpty() && title.length() < 250) {
+				film.setTitle(title);
+			}
+			if (year >= 1901 && year <= 2155) {
+				film.setRelease_year(year);
+			}
+			if (rating != null && !rating.equals("None")) {
+			film.setRating(rating);
+			}
+			if (description != null && !description.isEmpty()) {
+				film.setDescription(description);
+			}
+			film.setLanguage_id(langid);
+			if (rate != null) {
+			film.setRental_rate(rate);
+			}
+			if (length != null && !length.isEmpty()) {
+				film.setLength(length);
+			}
+			film.setCategory(category);
+			if (features != null && !features.isEmpty()) {
+				film.setSpecial_features(features);
+			}
+			film.setMedia_condition(media); 
+			
+			if (dao.editFilm(film) != null) {
+				mv.addObject(film);
+				mv.setViewName("WEB-INF/views/result.jsp");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return mv;
 	}

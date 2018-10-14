@@ -188,7 +188,7 @@ public class FilmDAOImpl implements FilmDAO {
         Connection conn = null;
 
         String sql = "UPDATE film "
-        		+ "SET title = ?, description = ?, release_year= ?, language_id = ?, rental_duration = ?, rental_rate= ?, length = ?, replacement_cost = ?, rating = ?, special_features = ? "
+        		+ "SET title = ?, description = ?, release_year= ?, language_id = ?, rental_rate= ?, length = ?, replacement_cost = ?, rating = ?, special_features = ? "
                 + "WHERE id = ?";
 
         try {
@@ -199,13 +199,12 @@ public class FilmDAOImpl implements FilmDAO {
             stmt.setString(2, film.getDescription());
             stmt.setInt(3, film.getRelease_year());
             stmt.setInt(4, film.getLanguage_id());
-            stmt.setString(5, film.getRental_duration());
-            stmt.setDouble(6, film.getRental_rate());
-            stmt.setString(7, film.getLength());
-            stmt.setDouble(8, film.getReplacement_cost());
-            stmt.setString(9, film.getRating());
-            stmt.setString(10, film.getSpecial_features());
-            stmt.setInt(11, film.getId());
+            stmt.setDouble(5, film.getRental_rate());
+            stmt.setString(6, film.getLength());
+            stmt.setDouble(7, film.getReplacement_cost());
+            stmt.setString(8, film.getRating());
+            stmt.setString(9, film.getSpecial_features());
+            stmt.setInt(10, film.getId());
             
             int updateCount = stmt.executeUpdate();
             if (updateCount == 0) {
