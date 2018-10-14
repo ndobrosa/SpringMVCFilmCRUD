@@ -31,7 +31,7 @@
       
       <br>
 		<h3>Enter the changes You would like to make</h3>
-	<form action="editFilmInfo.do" method="GET">
+	<form action="editFilmInfo.do" method="POST">
 		<input type="hidden" name="id" value="${film.id }"/>
 		
 		<label for="editFilm">Title:</label>
@@ -65,7 +65,7 @@
 <%-- 		<label for="editFilm">Language ID:</label>
 		<input type="number" name="language_id" value="${film.language_id}"/> <br> --%>
 		<label for="editFilm">Language (ID automatically adjusted):</label>
-		<select name="language">
+		<select name="language_id" type="number">
 			<option value="${film.language_id }">${film.language_name }</option>
   			<option value="1">English</option>
  			<option value="2">Italian</option>
